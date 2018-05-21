@@ -1,31 +1,31 @@
 from fpdf import FPDF
-from JsonGenerator import Form, TextField, Label, QRCodeLabel, Page, Rect, form2Json
-import json, io
-
+from Form import Form, Page, Label, TextField, QRCodeLabel, JsonConvert
+from QRCode import qr_decode, qr_encode
 # rounded off to 595  842 points
 
 def exampleForm():
-    fullnameLabel = Label(Rect(0, 40, 95, 30), "Full Name", 1001)
-    nameTextField = TextField(Rect(297.5, 20, 297.5, 30), 1001)
+    fullnameLabel = Label(0, 40, 95, 30, "Full Name")
+    nameTextField = TextField(297.5, 20, 297.5, 30, scan_id=2)
 
-    addressLabel = Label(Rect(0, 80, 95, 30), "Address", 1001)
-    addressTextField = TextField(Rect(297.5, 60, 297.5, 30), 1001)
+    addressLabel = Label(0, 80, 95, 30, "Address")
+    addressTextField = TextField(297.5, 60, 297.5, 30, scan_id=3)
 
-    cityLabel = Label(Rect(0, 120, 95, 30), "City", 1001)
-    cityTextField = TextField(Rect(297.5, 100, 297.5, 30), 1001)
+    cityLabel = Label(0, 120, 95, 30, "City")
+    cityTextField = TextField(297.5, 100, 297.5, 30, scan_id=4)
 
-    stateLabel = Label(Rect(0, 160, 95, 30), "State", 1001)
-    stateTextField = TextField(Rect(297.5, 140, 297.5, 30), 1001)
+    stateLabel = Label(0, 160, 95, 30, "State")
+    stateTextField = TextField(297.5, 140, 297.5, 30, scan_id=5)
 
-    zipLabel = Label(Rect(0, 200, 95, 30), "Zip Code", 1001)
-    zipTextfield = TextField(Rect(297.5, 180, 297.5, 30), 1001)
+    zipLabel = Label(0, 200, 95, 30, "Zip Code")
+    zipTextfield = TextField(297.5, 180, 297.5, 30, scan_id=6)
 
-    qrcode = QRCodeLabel(Rect(100, 10, 100, 10), 12313);
-    page = Page(qrcode,
-                [fullnameLabel, addressLabel, cityLabel, stateLabel, zipLabel],
+    qrcode = QRCodeLabel(100, 10, 100, 10, 12313)
+
+    page = Page(qrcode, [fullnameLabel, addressLabel, cityLabel, stateLabel, zipLabel],
                 [nameTextField, addressTextField, cityTextField, stateTextField,
                  zipTextfield])
-    return Form([page], 12312312313)
+
+    return Form([page], form_id="1")
 
 exampleForm()
 
@@ -35,15 +35,23 @@ if __name__ == '__main__':
 
     form = exampleForm()
 
+    # Output PDF
     for page in form.pages:
         fpdf.add_page()
         # add labels in page
         for label in page.labels:
             fpdf.set_font('Arial', 'B', 16)
-            fpdf.text(label.rect.x, label.rect.y, label.text)
+            fpdf.text(label.x, label.y, label.text)
 
         for textfield in page.textfields:
-            fpdf.rect(textfield.rect.x, textfield.rect.y, textfield.rect.width, textfield.rect.height, 'D')
+            fpdf.rect(textfield.x, textfield.y, textfield.width, textfield.height, 'D')
     fpdf.output("output.pdf", 'F')
-    with open('form.json', 'w') as write_file:
-        json.dump(form2Json(form), write_file)
+
+    # Output encoded json
+    filepath = JsonConvert.ToFile(form, "output.json")
+
+    fromFile = JsonConvert.FromFile(filepath)
+
+    print(fromFile)
+    #
+    qr_encode(form.form_id, 'qr.png')
