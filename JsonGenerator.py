@@ -44,13 +44,6 @@ class PDFEncoder(json.JSONEncoder):
         else:
             return {'__{}__'.format(o.__class__.__name__): o.__dict__}
 
-#
-# def decode_object(o):
-#     if 'Page' in o:
-#         form = Form()
-#         form.__dict__.update(o['Form'])
-#         return form
-
 
 class Form(object):
     def __init__(self, pages, form_id):
