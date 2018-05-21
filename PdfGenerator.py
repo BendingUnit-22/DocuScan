@@ -19,7 +19,7 @@ def exampleForm():
     zipLabel = Label(0, 200, 95, 30, "Zip Code")
     zipTextfield = TextField(297.5, 180, 297.5, 30, scan_id=6)
 
-    qrcode = QRCodeLabel(100, 10, 100, 10, 12313)
+    qrcode = QRCodeLabel(100, 10, 100, 10, "123123123123")
 
     page = Page(qrcode, [fullnameLabel, addressLabel, cityLabel, stateLabel, zipLabel],
                 [nameTextField, addressTextField, cityTextField, stateTextField,
@@ -27,7 +27,6 @@ def exampleForm():
 
     return Form([page], form_id="1")
 
-exampleForm()
 
 if __name__ == '__main__':
     fpdf = FPDF(orientation='P', unit='pt', format='A4')
@@ -54,4 +53,5 @@ if __name__ == '__main__':
 
     print(fromFile)
     #
-    qr_encode(form.form_id, 'qr.png')
+    qr_encode(form.pages[0].qrcode.data, 'qr.png')
+    qr_decode('qr.png')
