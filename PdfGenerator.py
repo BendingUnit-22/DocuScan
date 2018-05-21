@@ -19,7 +19,7 @@ def exampleForm():
     zipLabel = Label(0, 200, 95, 30, "Zip Code")
     zipTextfield = TextField(297.5, 180, 297.5, 30, scan_id=6)
 
-    qrcode = QRCodeLabel(100, 10, 100, 10, "123123123123")
+    qrcode = QRCodeLabel(100, 10, 100, 10, "This is a secret message")
 
     page = Page(qrcode, [fullnameLabel, addressLabel, cityLabel, stateLabel, zipLabel],
                 [nameTextField, addressTextField, cityTextField, stateTextField,

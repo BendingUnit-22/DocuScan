@@ -49,7 +49,7 @@ class JsonConvert(object):
         return result
 
 ##################################################################
-# Form object with Json Serialization
+# Form object
 ###################################################################
 @JsonConvert.register
 class Label(object):
