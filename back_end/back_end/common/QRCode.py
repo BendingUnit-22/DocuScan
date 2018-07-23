@@ -12,4 +12,3 @@ def qr_decode(png_path):
         image = Image.open(image_file)
         image.load()
     codes = zbarlight.scan_codes('qrcode', image)
-    print('QR codes: %s' % codes)

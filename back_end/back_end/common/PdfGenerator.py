@@ -1,6 +1,6 @@
 from fpdf import FPDF
-from Form import Form, Page, Label, TextField, QRCodeLabel, JsonConvert
-from QRCode import qr_decode, qr_encode
+from PDFPrep.Form import Form, Page, Label, TextField, QRCodeLabel, JsonConvert
+from PDFPrep.QRCode import qr_decode, qr_encode
 # rounded off to 595  842 points
 
 def exampleForm():

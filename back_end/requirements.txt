@@ -1,0 +1,15 @@
+click==6.7
+Django==2.0.7
+djangorestframework==3.8.2
+Flask==1.0.2
+fpdf==1.7.2
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+Pillow==5.1.0
+pypng==0.0.18
+PyQRCode==1.2.1
+pytz==2018.5
+qrtools==0.0.2
+Werkzeug==0.14.1
+zbarlight==2.0
