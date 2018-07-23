@@ -1,0 +1,33 @@
+
+
+
+h1 {
+  color: lightblue;
+  padding: 24px;
+  display:inline-block;
+}
+
+#savebutton {
+  display:inline-block;
+  margin: 20px 0px;
+  padding: 10px 30px;
+  color: white;
+  float: right;
+  border: #606dac solid 1px;
+  border-radius: 5px;
+}
+#savebutton:hover {
+  border: #606dff solid 1px;
+  background-color:  #606dff;
+  color: whitesmoke;
+}
+
+#savebutton:active {
+  border: #606dff solid 1px;
+  background-color: #3a30a3;
+  color: white;
+}
+
+.container-fluid {
+  background-color: darkslateblue;
+}

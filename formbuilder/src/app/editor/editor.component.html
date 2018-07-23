@@ -1,0 +1,64 @@
+
+<div class="container-fluid" id="editor">
+
+  <!-- title view -->
+  <div *ngIf="formItem.itemType ==='header'">
+    <div class="row">
+      <label class="col-6 align_right">Form Title</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.title">
+    </div>
+  </div>
+
+
+  <!-- title view -->
+  <div *ngIf="formItem.itemType ==='titleview'">
+    <div class="row">
+      <label class="col-6 align_right">Title</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.title">
+    </div>
+  </div>
+
+  <!-- textfield view -->
+  <div *ngIf="formItem.itemType==='textfield'">
+
+    <div class="row">
+      <label class="col-6 align_right">Title</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.title">
+    </div>
+
+    <div class="row">
+      <label class="col-6 align_right">Place Holder Text</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.placeHolder">
+    </div>
+
+    <div class="row">
+      <label class="col-6 align_right">Information</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.information">
+    </div>
+  </div>
+
+  <!-- phone view -->
+  <div *ngIf="formItem.itemType==='phoneview'">
+
+    <div class="row">
+      <label class="col-6 align_right">Title</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.title1">
+    </div>
+    <div class="row">
+      <label class="col-6 align_right">Place Holder Text</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.placeHolder1">
+    </div>
+    <div class="row">
+      <label class="col-6 align_right">Title</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.title2">
+    </div>
+    <div class="row">
+      <label class="col-6 align_right">Place Holder Text</label>
+      <input class="col-6" type="text" [(ngModel)]="formItem.placeHolder2">
+    </div>
+
+
+  </div>
+
+
+</div>

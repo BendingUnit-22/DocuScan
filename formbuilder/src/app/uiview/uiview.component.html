@@ -1,0 +1,8 @@
+
+
+<div class="bound" [class.selected]="selected" (click)="viewClick.emit($event);">
+  <app-headerview *ngIf="formItem.itemType==='header'" [formItem]="formItem"></app-headerview>
+  <app-textfield *ngIf="formItem.itemType==='textfield'" [formItem]="formItem"></app-textfield>
+  <app-titleview *ngIf="formItem.itemType==='titleview'" [formItem]="formItem"></app-titleview>
+  <app-phoneview *ngIf="formItem.itemType==='phoneview'" [formItem]="formItem"></app-phoneview>
+</div>
