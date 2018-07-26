@@ -6,6 +6,7 @@ from back_end.api import views
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    url(r'^', views.FormBuilderView.as_view()),
+    url(r'^upload/', views.upload, name="upload"),
+    url(r'^$', views.FormBuilderView.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

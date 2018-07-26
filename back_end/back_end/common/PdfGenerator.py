@@ -1,6 +1,6 @@
 from fpdf import FPDF
-from PDFPrep.Form import Form, Page, Label, TextField, QRCodeLabel, JsonConvert
-from PDFPrep.QRCode import qr_decode, qr_encode
+from back_end.common.Form import Form, Page, Label, TextField, QRCodeLabel, JsonConvert
+from back_end.common.QRCode import qr_decode, qr_encode
 # rounded off to 595  842 points
 
 def exampleForm():
@@ -31,7 +31,6 @@ def exampleForm():
 if __name__ == '__main__':
     fpdf = FPDF(orientation='P', unit='pt', format='A4')
     fpdf.set_title("DocuScan")
-
     form = exampleForm()
 
     # Output PDF

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {FormItem, HeaderItem, default as template_items} from './form-item';
 import {Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {RequestOptions} from '@angular/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,29 @@ export class FormItemService {
 
   }
 
+  postUpload(fileList) {
+    if(fileList.length > 0) {
+      const file: File = fileList[0];
+      const formData: FormData = new FormData();
+      formData.append('file', file, file.name);
+     // const headers = new Headers();
+      // /** In Angular 5, including the header Content-Type can invalidate your request */
+      // headers.append('Content-Type', 'multipart/form-data');
+      // headers.append('Accept', 'application/json');
+      // const options = new RequestOptions({ headers: headers });
+      this.http.post(this.baseURL + '/api/upload/', formData)
+        .subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+            console.log(err);
+          }
+        )
+    }
+  }
+
+
   postFormItems(formItems) {
     this.http.post(this.baseURL + '/api/', formItems)
       .subscribe(
@@ -27,7 +51,6 @@ export class FormItemService {
           console.log(err);
         }
       )
-
 
   }
 

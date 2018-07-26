@@ -3,9 +3,17 @@
     <div class="row">
       <div class="col-8">
         <h1 class="text-warning">DocuScan</h1>
-        <div id="savebutton" (click)="builder.onSubmit()">Save</div>
+        <div class="savebutton" (click)="builder.onSubmit()">Submit</div>
       </div>
-
+      <div class="col-4">
+        <!--<form  class="row" action="'http://127.0.0.1:8000/api/upload/" method="POST" >-->
+          <!--<input type="hidden" value="{{  csrf_token  }}">-->
+          <!--<input  class="col-8 display_block" type="file" name="file" style="display: inline-block;" #file/>-->
+          <!--<input class="col-4 savebutton left" type="submit" style="display: inline-block;" value="Upload File" (click)="builder.onUpload(file.value)"/>-->
+        <!--</form>-->
+        <file-uploader class="display_block" [maxSizeInKb]="110" [allowMultiple]="False" [fileType]="'application/*'"
+                       (onSelection)="builder.fileuploaderFileChange($event)"  [required]="false"></file-uploader>
+      </div>
     </div>
     <app-builder #builder></app-builder>
 </div>

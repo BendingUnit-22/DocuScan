@@ -15,6 +15,7 @@ import { TitleviewComponent } from './titleview/titleview.component';
 import { PhoneviewComponent } from './phoneview/phoneview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PrintableDirective } from './printable.directive';
+import {FileUploaderModule} from 'ng4-file-upload';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PrintableDirective } from './printable.directive';
     AngularDraggableModule,
     DragulaModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FileUploaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

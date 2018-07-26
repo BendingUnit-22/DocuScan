@@ -7,22 +7,36 @@ h1 {
   display:inline-block;
 }
 
-#savebutton {
+.display_block {
   display:inline-block;
   margin: 20px 0px;
   padding: 10px 30px;
   color: white;
   float: right;
+}
+
+.savebutton {
+  display:inline-block;
+  margin: 20px 0px;
+  padding: 10px 30px;
+  color: white;
+  float: right;
+  background:  #606dff;
   border: #606dac solid 1px;
   border-radius: 5px;
 }
-#savebutton:hover {
+
+.left {
+  background-color: #ffc107;
+  float: left;
+}
+.savebutton:hover {
   border: #606dff solid 1px;
   background-color:  #606dff;
   color: whitesmoke;
 }
 
-#savebutton:active {
+.savebutton:active {
   border: #606dff solid 1px;
   background-color: #3a30a3;
   color: white;

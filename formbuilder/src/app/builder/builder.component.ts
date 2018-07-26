@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormItem} from '../form-item';
  import {FormItemService} from '../form-item.service';
 import {Icons} from '../icons';
+import {RequestOptions} from '@angular/http';
 
 @Component({
   selector: 'app-builder',
@@ -27,6 +28,12 @@ export class BuilderComponent implements OnInit {
    onSubmit(): void {
       this.formService.postFormItems(this.formItems);
    }
+
+
+  fileuploaderFileChange(fileList: FileList) {
+    this.formService.postUpload(fileList);
+  }
+
    getTemplateTypes(): void {
       this.formService.getFormItems()
         .subscribe(items => this.templateTypes = items);
