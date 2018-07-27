@@ -1,0 +1,16 @@
+
+.row {
+  background-color: white;
+  padding: 20px;
+}
+
+#editor {
+  height: 100%;
+  width: 100%;
+}
+
+.align_right {
+  text-align: right;
+  width: 100%;
+  color: gray;
+}

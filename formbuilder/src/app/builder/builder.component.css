@@ -1,0 +1,33 @@
+
+
+li span{
+  margin: 20px;
+  text-align: center;
+}
+
+#content_boundary {
+  height:297mm;
+ }
+
+
+#main_area {
+  padding: 40px 40px;
+  /*border-top-style: dotted;*/
+  /*border-left-style: dotted;*/
+  /*border-bottom-style: dotted;*/
+  /*background-color: aliceblue;*/
+  background: repeating-linear-gradient(
+    45deg,
+    #606dbc,
+    #606dbc 10px,
+    #465298 10px,
+    #465298 20px
+  );
+}
+
+#side_area {
+  padding: 10px 10px;
+  background-color: #606dbc;
+
+}
+

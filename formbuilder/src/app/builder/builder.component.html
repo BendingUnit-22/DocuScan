@@ -1,0 +1,43 @@
+
+
+<div class="row" #content_boundary id="content_boundary">
+
+  <div class="col-8"  #main_area id="main_area" [dragula]="main_area_bag">
+    <app-uiview *ngFor="let droppedItem of formItems; let i = index"
+                [formItem]="droppedItem"
+                appPrintable=""
+                (viewClick)="selectElement(droppedItem, i)"
+                [selected]="i==selectedIndex">
+    </app-uiview>
+  </div>
+
+    <div class="col-4" id="side_area" >
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a  data-toggle="tab" href="#elements" class="nav-link text-warning active" (click)="clearSelection()" #elementTab>Elements</a></li>
+      <li class="nav-item"><a  data-toggle="tab" href="#editor" class="nav-link text-warning " #editorTab>Editor</a></li>
+    </ul>
+
+      <div class="tab-content clearfix">
+        <!--Element Tab-->
+        <ul class="list-group tab-pane" id="elements" [class.active]='!showEditor'>
+          <li *ngFor="let item of templateTypes" #item_element
+              (click)="clearSelection()"
+              class="list-group-item"
+              [ngDraggable]="true"
+              [trackPosition]="false"
+              [bounds]="content_boundary"
+              [inBounds]="true"
+              (started)="onStart(main_area.getBoundingClientRect())"
+              (endOffset)="onMoveEnd(item_element.getBoundingClientRect(), item)">
+            <fa-icon [icon]="getIcon(item)"></fa-icon> <span>{{item.displayName}}</span>
+          </li>
+        </ul>
+        <!--Editor Tab-->
+        <div id="editor" class="tab-pane active" [class.active]='showEditor'>
+          <app-editor *ngIf="selectedIndex !== -1" [formItem]="formItems[selectedIndex]"></app-editor>
+          {{formItems[selectedIndex] | json }}
+
+        </div>
+      </div>
+  </div>
+</div>
